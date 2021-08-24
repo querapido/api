@@ -1,4 +1,4 @@
-import { Field, ID, ObjectType } from "type-graphql";
+import { Field, ID, ObjectType, Root } from "type-graphql";
 import { Entity, PrimaryGeneratedColumn, Column, BaseEntity } from "typeorm";
 
 // make the User class available as a GraphQL type
@@ -24,7 +24,9 @@ export class User extends BaseEntity {
 
   // GraphQL-only field - not available in the DB
   @Field()
-  name: string;
+  name(@Root() parent: User): string {
+    return `${parent.firstName} ${parent.lastName}`;
+  }
 
   // users can't query this field - no Field() decorator
   @Column()
