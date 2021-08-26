@@ -1,4 +1,7 @@
 {
+  "ts-node": {
+    "files": true
+  },
   "compilerOptions": {
     "target": "es6",
     "module": "commonjs",
@@ -28,7 +31,11 @@
     "experimentalDecorators": true,
     "skipLibCheck": true,
     "baseUrl": ".",
-    "rootDir": "src"
+    "rootDir": "src",
+    "typeRoots": [
+      "./src/types",
+      "./node_modules/@types"
+    ]
   },
   "exclude": [
     "node_modules"
@@ -36,5 +43,5 @@
   "include": [
     "./src/**/*.tsx",
     "./src/**/*.ts"
-  ],
+  ]
 }
